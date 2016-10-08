@@ -1,8 +1,7 @@
 # Simon ® 
 ## The Classic Game of Memory Skill 
-![](assets/pic288369.jpg)
-
 ###*Think fast... SIMON says, "Chase my flashing lights and sounds"!*
+![](assets/pic288369.jpg)
 
 ###Rules
 1. Press START button; SIMON will illuminate the first colored section in a sequence.
