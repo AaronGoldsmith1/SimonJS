@@ -97,12 +97,12 @@ background-size: 100% 1.2em;;
 }
 
   #gameTitle {
-    width: 200px;
-    height: 50px;
-    background-color:white;
+
+
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 20px;
     text-align: center;
+    font-size: 100px
   }
 
 #startButton {
@@ -111,7 +111,14 @@ background-size: 100% 1.2em;;
   border-radius: 50px;
   background-color: #ED424B;
   margin: 0 auto;
-  margin-top: 90px;
+  margin-top: 70px;
+  position: absolute;
+  left: 125px
+}
 
-
+#start {
+  position:  absolute;
+  margin-top: 123px;
+  margin-left: 126px;
+  font-weight: bold;
 }
