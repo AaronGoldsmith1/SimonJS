@@ -1,5 +1,6 @@
 # Simon ® 
 ## The Classic Game of Memory Skill 
+![](assets/pic288369.jpg)
 
 ###*Think fast... SIMON says, "Chase my flashing lights and sounds"!*
 
@@ -43,4 +44,4 @@
 ###Wireframe:
 ![](assets/wireframe1.png)
 
-![](assets/pic288369.jpg)
+
