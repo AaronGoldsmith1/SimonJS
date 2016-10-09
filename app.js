@@ -1,14 +1,15 @@
+console.log("yo")
+
 var simonSequence = [];
 var mySequence = [];
 var counter = 0;
+var roundCounter = 0;
 var yellow = document.getElementById('yellow');
 var green = document.getElementById('green');
 var blue = document.getElementById('blue');
 var red = document.getElementById('red');
 var colors = document.getElementsByClassName('section');
 var isDown = false;
-
-$('#startButton').click(gameSequence());
 
 function gameSequence(){
 
@@ -18,22 +19,28 @@ function gameSequence(){
       var newMove = colors[Math.floor(Math.random() * 4) + 1];
       simonSequence.push(newMove);
       counter++;
-
+      roundCounter++;
+      for (var i=0; i < simonSequence.length; i++){
+        setTimout(1000);
+        lightUp(simonSequence[i]);
+      }
+      listenForMove();
     }
 }
+
   if(counter == 1){
     function myMove(){
         var newMove = colors[Math.floor(Math.random() * 4) + 1];
         mySequence.push(newMove);
         counter--;
+        roundCounter++
       }
 
 
       }
       compareArrays();
-    }
 
-
+$('#startButton').click(gameSequence());
 
 function compareArrays() {
 for (var i = 0; i < simonSequence.length; i++){
@@ -42,36 +49,34 @@ for (var i = 0; i < simonSequence.length; i++){
   } else {
     gameOver();
   }
-
 }
-
 }
-
-
 
 function gameOver() {}
 
-function lightUpColor(color){
-}
+function lightUpColor(color){}
 
 $('section').click(lightUpColor(){
+
+
     $(document).mousedown(function() {
       isDown = true;      // When mouse goes down, set isDown to true
     })
     .mouseup(function() {
       isDown = false;    // When mouse goes up, set isDown to false
     });
-
-  this.
-
-
-
-
-
+)
+  while (mousedown){
+  }
 })
 
-
 /*
+1. 1 listenForMove: function for each color section to: change color with new class while isDown = true, play sound,
+    push value 1-4 to array, increase round counter, call gameSequence()
+
+
+
+
 
 1. determine lighter version of the same colors
 2. store new color in a variable
