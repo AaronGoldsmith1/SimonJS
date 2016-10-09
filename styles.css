@@ -1,124 +1,103 @@
 body {
-background-color: #fff;
-background-image:
-linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
-linear-gradient(#eee .1em, transparent .1em);
-background-size: 100% 1.2em;;
+    background-color: #fff;
+    background-image: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px), linear-gradient(#eee .1em, transparent .1em);
+    background-size: 100% 1.2em;
+    ;
 }
-
-
 #mainToy {
-  height: 600px;
-  width: 600px;
-  border-radius: 600px;
-  background-color: #312F31;
-  margin: 0 auto;
-  margin-top: 100px;
-  position: relative;
-
+    height: 600px;
+    width: 600px;
+    border-radius: 600px;
+    background-color: #312F31;
+    margin: 0 auto;
+    margin-top: 100px;
+    position: relative;
 }
-
 #innerConsole {
-  height: 300px;
-  width: 300px;
-  border-radius: 280px;
-  background-color: #C2BBAA;
-  position: absolute;
-  top: 130px;
-  left: 130px;
-  border: 20px solid  #312F31;
-
+    height: 300px;
+    width: 300px;
+    border-radius: 280px;
+    background-color: #C2BBAA;
+    position: absolute;
+    top: 130px;
+    left: 130px;
+    border: 20px solid #312F31;
 }
-
 #gameTitle {
-  top: 140px;
-  left: 140px;
+    top: 140px;
+    left: 140px;
 }
-
-#green{
-  height: 260px;
-  width: 260px;
-  top: 40px;
-  left: 40px;
-  background-color: #158D43;
-  border-radius: 450px 0px 0px 0px;
-  position: absolute;
-
-
-
-
+#green {
+    height: 260px;
+    width: 260px;
+    top: 40px;
+    left: 40px;
+    background-color: #158D43;
+    border-radius: 450px 0px 0px 0px;
+    position: absolute;
 }
-
 #red {
-  height: 260px;
-  width: 260px;
-  background-color: #FF3F3C;
-  top: 40px;
-  right: 40px;
-  position: absolute;
-  border-radius: 0px 450px 0px 0px;
+    height: 260px;
+    width: 260px;
+    background-color: #FF3F3C;
+    top: 40px;
+    right: 40px;
+    position: absolute;
+    border-radius: 0px 450px 0px 0px;
 }
-
 #yellow {
-  height: 260px;
-  width: 260px;
-  bottom: 40px;
-  left: 40px;
-  background-color: #F5D825;
-  border-radius: 0px 0px 0px 450px;
-  position: absolute;
+    height: 260px;
+    width: 260px;
+    bottom: 40px;
+    left: 40px;
+    background-color: #F5D825;
+    border-radius: 0px 0px 0px 450px;
+    position: absolute;
 }
-
 #blue {
-  height: 260px;
-  width: 260px;
-  bottom: 40px;
-  right: 40px;
-  background-color: #208BD6;
-  border-radius: 0px 0px 450px 0px;
-  position: absolute;
+    height: 260px;
+    width: 260px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #208BD6;
+    border-radius: 0px 0px 450px 0px;
+    position: absolute;
 }
-
 #horizontal {
-  position: absolute;
-  width: 580px;
-  height: 20px;
-  top: 290px;
-  background-color: #312F31;
-
+    position: absolute;
+    width: 580px;
+    height: 20px;
+    top: 290px;
+    background-color: #312F31;
 }
-
 #vertical {
-  position: absolute;
-  width: 20px;
-  height: 580px;
-  margin-left: 290px;
-  background-color: #312F31;
+    position: absolute;
+    width: 20px;
+    height: 580px;
+    margin-left: 290px;
+    background-color: #312F31;
 }
-
-  #gameTitle {
-
-
+#gameTitle {
     margin: 0 auto;
     margin-top: 20px;
     text-align: center;
     font-size: 100px
-  }
-
-#startButton {
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
-  background-color: #ED424B;
-  margin: 0 auto;
-  margin-top: 70px;
-  position: absolute;
-  left: 125px
 }
-
+#startButton {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #ED424B;
+    margin: 0 auto;
+    margin-top: 70px;
+    position: absolute;
+    left: 125px;
+    outline: none;
+    border:
+}
 #start {
-  position:  absolute;
-  margin-top: 123px;
-  margin-left: 126px;
-  font-weight: bold;
+    position: absolute;
+    margin-top: 123px;
+    margin-left: 126px;
+    font-weight: bold;
 }
