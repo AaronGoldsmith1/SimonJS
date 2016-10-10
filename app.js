@@ -1,5 +1,4 @@
 console.log("yo")
-
 var simonSequence = [];
 var mySequence = [];
 var counter = 0;
@@ -35,9 +34,8 @@ function gameSequence(){
         counter--;
         roundCounter++
       }
-
-
       }
+}
       compareArrays();
 
 $('#startButton').click(gameSequence());
@@ -56,19 +54,18 @@ function gameOver() {}
 
 function lightUpColor(color){}
 
-$('section').click(lightUpColor(){
 
 
-    $(document).mousedown(function() {
-      isDown = true;      // When mouse goes down, set isDown to true
+
+$(colors).on("mousedown", function(){
+      console.log('hi');      // When mouse goes down, set isDown to true
     })
-    .mouseup(function() {
-      isDown = false;    // When mouse goes up, set isDown to false
+            .on("mouseup", function() {
+      console.log('bye');  // When mouse goes up, set isDown to false
     });
-)
-  while (mousedown){
-  }
-})
+
+
+
 
 /*
 1. 1 listenForMove: function for each color section to: change color with new class while isDown = true, play sound,
