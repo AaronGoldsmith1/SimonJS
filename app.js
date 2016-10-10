@@ -19,7 +19,7 @@ function gameSequence(){
 
 function simonMove(){
 
-  var newMove = $colors[Math.floor(Math.random() * 4) + 1];
+  var newMove = $colors[Math.floor(Math.random() * 4 + 0)];
   simonSequence.push(newMove);
   counter++;
   roundCounter++;
@@ -65,10 +65,11 @@ function gameOver() {
 
 function listenForMove(){}
 
-function lightUp(color){
+//function lightUp(){
   $colors.on("mousedown", function(){
     console.log('hi');
     $(this).css('filter', 'brightness(160%)');
+    mySequence.push(this);
 
 
   })
@@ -78,4 +79,4 @@ function lightUp(color){
     $(this).css('filter', 'brightness(100%)');
 
   });
-}
+//}
