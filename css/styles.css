@@ -93,7 +93,7 @@ body {
     position: absolute;
     left: 125px;
     outline: none;
-    border:
+    border: 0;
 }
 #start {
     position: absolute;
