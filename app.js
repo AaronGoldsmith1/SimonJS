@@ -5,20 +5,14 @@ var roundCounter = 0;
 $colors = $('.section');
 var isDown = false;
 
-function gameSequence(){
-console.log("hi")
-  if (counter == 0){
-    simonMove();
 
-}
+function gameSequence(){
+  console.log("hi")
+  if (counter == 0){
+    simonMove();}
 
   if(counter == 1){
-    function myMove(){
-        listenForMove();
-        mySequence.push(myMove);
-        counter--;
-        roundCounter++
-      }
+    myMove();
       }
 }
       compareArrays();
@@ -38,6 +32,13 @@ function simonMove(){
   listenForMove();
 }
 
+function myMove(){
+    listenForMove();
+    mySequence.push(myMove);
+    counter--;
+    roundCounter++
+  }
+
 
 $('#startButton').click(gameSequence);
 
@@ -51,10 +52,16 @@ for (var i = 0; i < simonSequence.length; i++){
 }
 }
 
-function gameOver() {}
+function gameOver() {
+  $('#yellow').css('filter', 'brightness(160%)');
+  setTimeout(function(){
+    $('#yellow').css('filter', 'brightness(100%)');
+  },1400)
+  simonSequence.length = 0;
+  mySequence.length = 0;
 
 
-
+}
 
 function listenForMove(){}
 
