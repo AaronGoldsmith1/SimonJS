@@ -31,7 +31,7 @@ function simonMove(){
 
   counter++;
   roundCounter++;
-  gameSequence();
+
 
 
 }
@@ -47,9 +47,10 @@ function myMove(){
   $colors.on("mouseup", function() {
     console.log('bye');
     $(this).css('filter', 'brightness(100%)');
+    simonMove();
   });
     counter--;
-gameSequence();
+
   }
 
 
@@ -70,6 +71,7 @@ function gameOver() {
   setTimeout(function(){
     $('#yellow').css('filter', 'brightness(100%)');
   },1400)
+
   simonSequence.length = 0;
   mySequence.length = 0;
 
