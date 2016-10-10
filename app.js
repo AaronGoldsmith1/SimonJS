@@ -29,12 +29,16 @@ function simonMove(){
   simonSequence.push(newMove);
   counter++;
   roundCounter++;
-  for (var i=0; i < simonSequence.length; i++){
-    setTimeout(1000);
-    lightUp(simonSequence[i]);
-  }
+  simonSequence.forEach(function(item){
+    $(item).css('filter', 'brightness(160%)');
+    setTimeout(function(){
+      $(item).css('filter', 'brightness(100%)');
+    },1000)
+  })
   listenForMove();
 }
+
+
 $('#startButton').click(gameSequence);
 
 function compareArrays() {
