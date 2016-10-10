@@ -2,8 +2,8 @@ var simonSequence = [];
 var mySequence = [];
 var counter = 0;
 var roundCounter = 0;
-$colors = $('.section');
 var isDown = false;
+$colors = $('.section');
 
 
 function gameSequence(){
@@ -15,28 +15,41 @@ function gameSequence(){
     myMove();
       }
 }
-      compareArrays();
+
+compareArrays();
 
 function simonMove(){
 
   var newMove = $colors[Math.floor(Math.random() * 4 + 0)];
   simonSequence.push(newMove);
-  counter++;
-  roundCounter++;
   simonSequence.forEach(function(item){
     $(item).css('filter', 'brightness(160%)');
     setTimeout(function(){
       $(item).css('filter', 'brightness(100%)');
     },1000)
   })
-  listenForMove();
+
+  counter++;
+  roundCounter++;
+  gameSequence();
+
+
 }
 
 function myMove(){
-    listenForMove();
-    mySequence.push(myMove);
+
+  $colors.on("mousedown", function(){
+    console.log('hi');
+    $(this).css('filter', 'brightness(160%)');
+    mySequence.push(this);
+  })
+
+  $colors.on("mouseup", function() {
+    console.log('bye');
+    $(this).css('filter', 'brightness(100%)');
+  });
     counter--;
-    roundCounter++
+gameSequence();
   }
 
 
@@ -63,20 +76,8 @@ function gameOver() {
 
 }
 
-function listenForMove(){}
+
 
 //function lightUp(){
-  $colors.on("mousedown", function(){
-    console.log('hi');
-    $(this).css('filter', 'brightness(160%)');
-    mySequence.push(this);
 
-
-  })
-
-  $colors.on("mouseup", function() {
-    console.log('bye');
-    $(this).css('filter', 'brightness(100%)');
-
-  });
 //}
