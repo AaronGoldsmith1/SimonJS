@@ -12,6 +12,7 @@ body {
     margin: 0 auto;
     margin-top: 100px;
     position: relative;
+     box-shadow: 20px 10px 20px 10px  #888888;
 }
 #innerConsole {
     height: 300px;
@@ -35,6 +36,7 @@ body {
     background-color: #158D43;
     border-radius: 450px 0px 0px 0px;
     position: absolute;
+
 }
 #red {
     height: 260px;
@@ -44,6 +46,7 @@ body {
     right: 40px;
     position: absolute;
     border-radius: 0px 450px 0px 0px;
+
 }
 #yellow {
     height: 260px;
@@ -53,6 +56,7 @@ body {
     background-color: #F5D825;
     border-radius: 0px 0px 0px 450px;
     position: absolute;
+
 }
 #blue {
     height: 260px;
@@ -62,6 +66,7 @@ body {
     background-color: #208BD6;
     border-radius: 0px 0px 450px 0px;
     position: absolute;
+
 }
 #horizontal {
     position: absolute;
@@ -81,10 +86,10 @@ body {
     margin: 0 auto;
     margin-top: 20px;
     text-align: center;
-    font-size: 90px;
+    font-size: 80px;
+    font-family: 'Play', sans-serif;
+    color: #312F31;
 }
-
-
 #startButton {
     width: 50px;
     height: 50px;
@@ -95,11 +100,14 @@ body {
     position: absolute;
     left: 125px;
     outline: none;
-    border: 0;
+    border-color: #312F31;
 }
 #start {
     position: absolute;
     margin-top: 123px;
-    margin-left: 126px;
+    margin-left: 115px;
     font-weight: bold;
+    font-family: 'Play', sans-serif;
+    color: #312F31;
+    font-size: 25px;
 }

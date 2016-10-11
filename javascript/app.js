@@ -72,8 +72,10 @@ function myMove(){
       simonMove();
     }else{
       alert("You Lose.");
+      gameOver();
+      location.reload();
     }
-  }, 5000);
+  }, 3000);
 }
 
 //only comparing first element
@@ -87,6 +89,9 @@ for (var i = 0; i < simonSequence.length; i++){
   }
 }
 }
+
+/*for (var i = 0; i < a.length; ++i) {
+    if (a[i] !== b[i]) return false; */
 
 function gameOver() {
   $('#yellow').css('filter', 'brightness(160%)');
@@ -108,10 +113,10 @@ function playerColorMousedown(){
 
 function playerColorMouseup(){
    $(this).css('filter', 'brightness(100%)');
-   myMove(); // This will determine when it's simons move
+   myMove(); // determine when it's simons move
 }
 
-$('#startButton').click(gameSequence); // Start the game
+$('#startButton').click(gameSequence); // Start game
 
  $colors.on("mousedown", playerColorMousedown);
  $colors.on("mouseup", playerColorMouseup);
