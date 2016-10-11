@@ -3,15 +3,16 @@ var mySequence = [];
 var counter = 0;
 var roundCounter = 0;
 var isDown = false;
+var playerTimer = false;
 $colors = $('.section');
 
-
 function gameSequence(){
-  console.log("hi")
-  if (counter == 0){
-    simonMove();}
-  if(counter == 1){
-    myMove();}
+  console.log("hi");
+  if (counter === 0){
+    simonMove();
+  }else{
+    myMove();
+  }
 }
 
 //compareArrays();
@@ -20,55 +21,60 @@ function simonMove(){
 
   var newMove = $colors.eq(Math.floor(Math.random() * 4));
   simonSequence.push(newMove);
-  var i = 0;
-  var lightUpSimon = setInterval(function() {
-    simonSequence[i].css('filter', 'brightness(160%)');
-    setTimeout(function(){
-      simonSequence[i].css('filter', 'brightness(100%)');
-    i++;
-    if (i == simonSequence.length){
-      clearInterval(lightUpSimon)
-    }
-      },750)
 
-
-  }, 1000)
-
-
-  /*simonSequence.forEach(function(item){
-    $(item).css('filter', 'brightness(160%)').delay(500);
-    setTimeout(function(){
-      $(item).css('filter', 'brightness(100%)');
-    },1000)
-  })*/
+  lightSimonsNextColor(0);
 
   counter++;
   roundCounter++;
+}
 
+function lightSimonsNextColor(index){
+  var $currentColor = simonSequence[index];
+  $currentColor.css('filter', 'brightness(160%)');
+  console.log($currentColor.attr('id'));
 
+  setTimeout(function(){
+    $currentColor.css('filter', 'brightness(100%)');
+    var nextIndex = index + 1;
 
+    if(nextIndex < simonSequence.length){
+    	setTimeout(function () {
+      	lightSimonsNextColor(nextIndex);
+    	}, 500);
+    }else{
+    	beginPlayersTurn();
+    }
+
+  }, 1000);
+
+}
+
+function beginPlayersTurn(){
+	console.log("Begin Players Turn");
+	mySequence = [];
 }
 
 function myMove(){
+	console.log("Checking Players Turn");
+	if(playerTimer){
+		clearTimeout(playerTimer);
+	}
 
-  $colors.on("mousedown", function(){
-    console.log('hi');
-    $(this).css('filter', 'brightness(160%)');
-    mySequence.push(this);
-  })
+  playerTimer = setTimeout(function(){
 
-  $colors.on("mouseup", function() {
-    console.log('bye');
-    $(this).css('filter', 'brightness(100%)');
-    simonMove();
-  });
-  counter--;
-
+    // This timer runs at the end of our turn.
+    // Determine if the turn was completed or not
+   if(mySequence.length == simonSequence.length){
+      //Yay, we've kept up. Keep going
+      clearTimeout(playerTimer);
+   //   debugger;
+   		console.log("Moving to Simons Turn");
+      simonMove();
+    }else{
+      alert("You Lose.");
+    }
+  }, 5000);
 }
-
-//check if user array is same length as simon
-
-$('#startButton').click(gameSequence); // Start the game
 
 //only comparing first element
 
@@ -94,3 +100,18 @@ function gameOver() {
 
 
 }
+
+function playerColorMousedown(){
+  $(this).css('filter', 'brightness(160%)');
+  mySequence.push(this);
+}
+
+function playerColorMouseup(){
+   $(this).css('filter', 'brightness(100%)');
+   myMove(); // This will determine when it's simons move
+}
+
+$('#startButton').click(gameSequence); // Start the game
+
+ $colors.on("mousedown", playerColorMousedown);
+ $colors.on("mouseup", playerColorMouseup);
