@@ -29,7 +29,14 @@
 
 
 
-###Considerations
+###Installation Instructions
+** Download .zip  https://github.com/AaronJGoldsmith/SimonJS/archive/master.zip , double-click to extract files, open index.html
+
+or 
+
+**Visit: <https://aaronjgoldsmith.github.io/SimonJS/>**
+
+
 
 #####Sounds for specific sections
 * **E-note** (blue)
@@ -37,7 +44,7 @@
 * **A-note** (red)
 * **E-note** (green)
 
-###Trello Board: 
+###Trello: 
 ####<https://trello.com/b/eFfWUqyA/simon-says-javascript>
 
 ###Wireframe:
