@@ -4,7 +4,8 @@ var counter = 0;
 var roundCounter = 0;
 var isDown = false;
 var playerTimer = false;
-$colors = $('.section'); //need object for sounds
+$colors = $('.section'); //need object for sounds?
+$sounds = $('.sound');
 
 
 function gameSequence(){
@@ -16,16 +17,22 @@ function gameSequence(){
   }
 }
 
-//compareArrays();
+
 
 function simonMove(){
 
   var newMove = $colors[(Math.floor(Math.random() * 4))];
   simonSequence.push(newMove);
-  // console.log("simon:", simonSequence);
   lightSimonsNextColor(0);
   counter++;
   roundCounter++;
+  if (roundCounter == 11){
+    alert("you win!")
+    simonSequence.length = 0;
+    mySequence.length = 0;
+    roundCounter = 0;
+    $('#roundDisplay').text(0);
+  }
   $('#roundDisplay').text(roundCounter);
 }
 
@@ -106,11 +113,8 @@ function gameOver() {
     $('#yellow').css('filter', 'brightness(100%)');
 
   },1400)
-
   simonSequence.length = 0;
   mySequence.length = 0;
-
-
 }
 
 function playerColorMousedown(){
@@ -135,6 +139,8 @@ $('#resetButton').click(function(){
   $('#roundDisplay').text(0);
   clearTimeout(playerTimer);
 })
+
+
 
 
 
