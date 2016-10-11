@@ -127,6 +127,13 @@ $('#startButton').click(gameSequence); // Start game
  $colors.on("mousedown", playerColorMousedown);
  $colors.on("mouseup", playerColorMouseup);
 
+$('#resetButton').click(function(){
+  simonSequence.length = 0;
+  mySequence.length = 0;
+  roundCounter = 0;
+  $('#roundDisplay').text(0);
+  clearTimeout(playerTimer);
+})
 
 //simon plays
 //create timeout(give player3sec to click)
