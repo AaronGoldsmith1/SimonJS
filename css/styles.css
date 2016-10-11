@@ -90,13 +90,27 @@ body {
     font-family: 'Play', sans-serif;
     color: #312F31;
 }
+
+#roundDisplay{
+  height: 30px;
+  width: 40px;
+  background-color: black;
+  color: red;
+  font-size: 27px;
+  text-align: center;
+
+  border: 4px solid #312F31;
+  border-radius: 4px;
+  margin: 0 auto;
+
+}
 #startButton {
     width: 50px;
     height: 50px;
     border-radius: 50px;
     background-color: #ED424B;
     margin: 0 auto;
-    margin-top: 70px;
+    margin-top: 20px;
     position: absolute;
     left: 65px;
     outline: none;
@@ -109,7 +123,7 @@ body {
   border-radius: 50px;
   background-color: #312F31;
   margin: 0 auto;
-  margin-top: 70px;
+  margin-top: 20px;
   position: absolute;
   right: 65px;
   outline: none;
@@ -117,8 +131,8 @@ body {
 }
 
 #reset {
-  margin-top: 123px;
-  margin-left: 180px;
+  margin-top: 73px;
+  margin-left: 177px;
   font-weight: bold;
   font-family: 'Play', sans-serif;
   color: #312F31;
@@ -127,7 +141,7 @@ body {
 }
 #start {
     position: absolute;
-    margin-top: 123px;
+    margin-top: 73px;
     margin-left: 55px;
     font-weight: bold;
     font-family: 'Play', sans-serif;
