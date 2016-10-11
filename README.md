@@ -54,7 +54,7 @@
 ##Trello
 ####<https://trello.com/b/eFfWUqyA/simon-says-javascript>
 
-##Wireframes
+##Wireframe
 ![](assets/Simon.png)
 ![](assets/Simon2.png)
 
