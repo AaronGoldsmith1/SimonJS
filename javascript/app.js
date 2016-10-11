@@ -4,7 +4,7 @@ var counter = 0;
 var roundCounter = 0;
 var isDown = false;
 var playerTimer = false;
-$colors = $('.section');
+$colors = $('.section'); //need object for sounds
 
 
 function gameSequence(){
@@ -101,6 +101,7 @@ function compareArrays(arr1, arr2) {
 
 function gameOver() {
   $('#yellow').css('filter', 'brightness(160%)');
+  $('#razz')[0].play();
   setTimeout(function(){
     $('#yellow').css('filter', 'brightness(100%)');
 
@@ -134,6 +135,8 @@ $('#resetButton').click(function(){
   $('#roundDisplay').text(0);
   clearTimeout(playerTimer);
 })
+
+
 
 //simon plays
 //create timeout(give player3sec to click)
