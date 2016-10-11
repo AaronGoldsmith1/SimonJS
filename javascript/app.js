@@ -26,13 +26,6 @@ function simonMove(){
   lightSimonsNextColor(0);
   counter++;
   roundCounter++;
-  if (roundCounter == 11){
-    alert("you win!")
-    simonSequence.length = 0;
-    mySequence.length = 0;
-    roundCounter = 0;
-    $('#roundDisplay').text(0);
-  }
   $('#roundDisplay').text(roundCounter);
 }
 
@@ -113,6 +106,7 @@ function gameOver() {
     $('#yellow').css('filter', 'brightness(100%)');
 
   },1400)
+
   simonSequence.length = 0;
   mySequence.length = 0;
 }
