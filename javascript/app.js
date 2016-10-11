@@ -6,6 +6,7 @@ var isDown = false;
 var playerTimer = false;
 $colors = $('.section');
 
+
 function gameSequence(){
   console.log("hi");
   if (counter === 0){
@@ -25,6 +26,7 @@ function simonMove(){
   lightSimonsNextColor(0);
   counter++;
   roundCounter++;
+  $('#roundDisplay').text(roundCounter);
 }
 
 function lightSimonsNextColor(index){
