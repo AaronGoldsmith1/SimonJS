@@ -61,6 +61,7 @@ function startTimer(){
   playerTimer = setTimeout(function(){
     alert("out of time!")
   },3000)
+  
 }
 
 
@@ -131,7 +132,7 @@ $('#resetButton').click(function(){
   mySequence.length = 0;
   roundCounter = 0;
   $('#roundDisplay').text(0);
-  clearTimeout(playerTimer);
+  window.clearTimeout(playerTimer);
 })
 
 
@@ -150,5 +151,5 @@ $('#resetButton').click(function(){
 //dont play moves too quickly
 
 //TO-DO;
-//RESET BUTTON - no location reload
+//RESET BUTTON - clearTimeout
 //WINNING or ROUND COUNTER WITH DISPLAY
