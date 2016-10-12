@@ -160,6 +160,26 @@ body {
     font-size: 25px;
 }
 
+#crazyMode {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  background-color: #208BD6;
+  outline: none;
+  border-color: ;
+  font-weight: bold;
+  font-family: 'Play', sans-serif;
+  color: #312F31;
+  font-size: 30px;
+  position: absolute;
+  right: 130px;
+  bottom: 85px;
+
+
+}
+
+
+
 
 .rotate {
   -webkit-animation: rotating 8s linear infinite;

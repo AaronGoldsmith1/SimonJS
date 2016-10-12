@@ -8,6 +8,10 @@ var winFlashes = 0;
 $colors = $('.section');
 //$sounds = $('.sound');
 
+$("#crazyMode").click(function(){
+  $("#mainToy").toggleClass("rotate");
+})
+
 
 var colorObj = {};
 
@@ -149,7 +153,9 @@ $('#resetButton').click(function(){
   mySequence.length = 0;
   roundCounter = 0;
   $('#roundDisplay').text(0);
+  $('#mainToy').removeClass("rotate");
   window.clearTimeout(playerTimer);
+
 })
 
  function userWin() {
@@ -209,7 +215,7 @@ $('#resetButton').click(function(){
    color.element.css('filter', 'brightness(160%)');
 
    if(playSound){
-  
+
      console.log(colorName + "'s Sound");
     color.sound[0].play()
    }
