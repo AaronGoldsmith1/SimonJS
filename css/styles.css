@@ -132,9 +132,9 @@ body {
 
 }
 #startButton {
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
     background-color: #ED424B;
     margin: 0 auto;
     margin-top: 60px;
@@ -145,9 +145,9 @@ body {
 }
 
 #resetButton {
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
   background-color: #312F31;
   margin: 0 auto;
   margin-top: 60px;
@@ -158,22 +158,22 @@ body {
 }
 
 #reset {
-  margin-top: 113px;
-  margin-left: 177px;
+  margin-top: 104px;
+  margin-left: 190px;
   font-weight: bold;
   font-family: 'Play', sans-serif;
   color: #312F31;
-  font-size: 25px;
+  font-size: 18px;
 
 }
 #start {
     position: absolute;
-    margin-top: 113px;
-    margin-left: 55px;
+    margin-top: 104px;
+    margin-left: 60px;
     font-weight: bold;
     font-family: 'Play', sans-serif;
     color: #312F31;
-    font-size: 25px;
+    font-size: 18px;
 }
 
 #crazyMode {
@@ -189,14 +189,72 @@ body {
   font-size: 30px;
   position: absolute;
   right: 130px;
-  bottom: 85px;
+  bottom: 87px;
   border-color: black;
+}
 
+#difficultySwitch {
+    position: absolute;
+    right: 135px;
+    bottom: 25px;
+}
+
+#difficultyEasy {
+  position: absolute;
+  font-family: 'Play', sans-serif;
+  right: 35px;
+  bottom: 1px;
+  font-size: 14px;
+}
+
+#difficultyHard {
+  position: absolute;
+  font-family: 'Play', sans-serif;
+  left: 34px;
+  bottom: 1px;
+  font-size: 14px;
 
 }
 
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #312F31;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #208BD6;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
 
 
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
 
 .rotate {
   -webkit-animation: rotating 8s linear infinite;
