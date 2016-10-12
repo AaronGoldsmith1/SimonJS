@@ -4,8 +4,12 @@ var counter = 0;
 var roundCounter = 0;
 var isDown = false;
 var playerTimer = false;
-$colors = $('.section'); //need object for sounds?
+var winFlashes = 0;
+$colors = $('.section');
 $sounds = $('.sound');
+
+
+
 
 
 function gameSequence(){
@@ -61,7 +65,7 @@ function startTimer(){
   playerTimer = setTimeout(function(){
     alert("out of time!")
   },3000)
-  
+
 }
 
 
@@ -73,12 +77,16 @@ function myMove(){
 	}
   // Determine if the turn was completed or not
   if(mySequence.length == simonSequence.length){
-    //Yay, we've kept up. Keep going
     var equality = compareArrays(mySequence, simonSequence)
     console.log(equality)
     if (equality){
-      console.log("Moving to Simons Turn");
-      simonMove();
+      if (roundCounter == 3){
+        alert("you win!");
+        userWin();
+      }else{
+        console.log("Moving to Simons Turn");
+        simonMove();
+      }
     } else {
       console.log('running game over')
       gameOver();
@@ -110,6 +118,7 @@ function gameOver() {
 
   simonSequence.length = 0;
   mySequence.length = 0;
+  window.clearTimeout(playerTimer);
 }
 
 function playerColorMousedown(){
@@ -135,6 +144,57 @@ $('#resetButton').click(function(){
   window.clearTimeout(playerTimer);
 })
 
+function userWin() {
+  winFlashes++;
+
+ for(var i =0; i<4; i++){
+   $colors.each(function(){
+     var color = $(this);
+     var turnOnIn = 1000 * i;
+     var turnOffIn = turnOnIn + 500;
+
+     //turn on
+     setTimeout(function(){
+       color.css('filter', 'brightness(160%)');
+     }, turnOnIn);
+
+     //turn off
+     setTimeout(function(){
+       color.css('filter', 'brightness(100%)');
+     }, turnOffIn);
+
+     window.clearTimeout(playerTimer);
+   });
+ }
+
+}
+
+
+   //0 : turn on 0, turn off in 500
+   //1 : turn on in 1000, turn off in 1500
+   //2 : turn on in 2000, turn off in 2500
+   //3: turn on in 3000, turn off in 3500
+
+
+//simon plays
+//create timeout(give player3sec to click)
+//player clicks
+//clear timeout
+//highlight what simon did
+//check move?
+//simon play OR create timeout
+
+
+//dont play moves too quickly
+
+//TO-DO;
+//RESET BUTTON - clearTimeout
+//WINNING or ROUND COUNTER WITH DISPLAY
+
+
+
+
+
 
 
 
@@ -153,3 +213,21 @@ $('#resetButton').click(function(){
 //TO-DO;
 //RESET BUTTON - clearTimeout
 //WINNING or ROUND COUNTER WITH DISPLAY
+
+
+
+ /*
+
+for (var i = 0; i < 4; i++){}
+  $colors.each(function(){
+    $(this).css('filter', 'brightness(160%)');
+    setTimeout(function(){
+      $(this).css('filter', 'brightness(100%)');
+
+    },1400)
+
+    window.clearTimeout(playerTimer);
+  })
+  if (roundCounter == 3){
+    alert("you win!")
+*/
