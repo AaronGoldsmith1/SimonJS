@@ -6,11 +6,19 @@ var isDown = false;
 var playerTimer = false;
 var winFlashes = 0;
 $colors = $('.section');
-$sounds = $('.sound');
+//$sounds = $('.sound');
 
 
+var colorObj = {};
 
+$colors.each(function(){
+  var colorName = $(this).attr('id');
+  colorObj[colorName] = {
+    element: $(this),
+    sound: $('#' + colorName + 'Sound')
+  }
 
+});
 
 function gameSequence(){
   console.log("hi");
@@ -36,7 +44,8 @@ function simonMove(){
 function lightSimonsNextColor(index){
   // var index = 0;
   var $currentColor = $(simonSequence[index]);
-  $currentColor.css('filter', 'brightness(160%)');
+  var colorName = getColorName($currentColor);
+  lightUpButton(colorName, true);
   console.log($currentColor.attr('id'));
 
   setTimeout(function(){
@@ -44,11 +53,11 @@ function lightSimonsNextColor(index){
     var nextIndex = index + 1;
 
     if(nextIndex < simonSequence.length){
-    	setTimeout(function () {
-      	lightSimonsNextColor(nextIndex);
-    	}, 500);
+      setTimeout(function () {
+        lightSimonsNextColor(nextIndex);
+      }, 500);
     }else{
-    	beginPlayersTurn();
+      beginPlayersTurn();
       startTimer();
     }
 
@@ -109,7 +118,7 @@ function compareArrays(arr1, arr2) {
 }
 
 function gameOver() {
-  $('#yellow').css('filter', 'brightness(160%)');
+  lightUpButton("yellow", true);
   $('#razz')[0].play();
   setTimeout(function(){
     $('#yellow').css('filter', 'brightness(100%)');
@@ -122,7 +131,9 @@ function gameOver() {
 }
 
 function playerColorMousedown(){
-  $(this).css('filter', 'brightness(160%)');
+  var colorName = getColorName(this);
+  lightUpButton(colorName, true);
+  //$(this).css('filter', 'brightness(160%)');
   mySequence.push(this);
 }
 
@@ -144,32 +155,114 @@ $('#resetButton').click(function(){
   window.clearTimeout(playerTimer);
 })
 
-function userWin() {
-  winFlashes++;
+ function userWin() {
+   winFlashes++;
+  $colors.each(function(){
+    var colorName = getColorName(this);
+    lightUpButton(colorName, true);
+    setTimeout(function(){
+      $(this).css('filter', 'brightness(100%)');
 
- for(var i =0; i<4; i++){
-   $colors.each(function(){
-     var color = $(this);
-     var turnOnIn = 1000 * i;
-     var turnOffIn = turnOnIn + 500;
+      if(winFlashes < 4){
+        setTimeout(function(){
+          userWin();
+        }, 500)
+      }else{
+        winFlashes = 0;
+      }
+    },1400)
 
-     //turn on
-     setTimeout(function(){
-       color.css('filter', 'brightness(160%)');
-     }, turnOnIn);
-
-     //turn off
-     setTimeout(function(){
-       color.css('filter', 'brightness(100%)');
-     }, turnOffIn);
-
-     window.clearTimeout(playerTimer);
-   });
+    window.clearTimeout(playerTimer);
+  });
  }
 
-}
 
 
+
+//simon plays
+//create timeout(give player3sec to click)
+//player clicks
+//clear timeout
+//highlight what simon did
+//check move?
+//simon play OR create timeout
+
+
+//dont play moves too quickly
+
+//TO-DO;
+//RESET BUTTON - clearTimeout
+//WINNING or ROUND COUNTER WITH DISPLAY
+
+
+/*
+
+ function userWin() {
+   winFlashes++;
+  $colors.each(function(){
+    var color = $(this)
+    color.css('filter', 'brightness(160%)');
+    setTimeout(function(){
+      color.css('filter', 'brightness(100%)');
+      debugger;
+      if(winFlashes < 4){
+        setTimeout(function(){
+          userWin();
+        }, 500)
+      }else{
+        winFlashes = 0;
+      }
+    },1400)
+
+    window.clearTimeout(playerTimer);
+  });
+ }
+*/
+ function userWin() {
+   winFlashes++;
+
+  for(var i =0; i<4; i++){
+    $colors.each(function(){
+      var color = $(this);
+      var turnOnIn = 1000 * i;
+      var turnOffIn = turnOnIn + 500;
+
+      //0 : turn on 0, turn off in 500
+      //1 : turn on in 1000, turn off in 1500
+      //2 : turn on in 2000, turn off in 2500
+      //3: turn on in 3000, turn off in 3500
+
+      //turn on
+      setTimeout(function(){
+        var colorName = getColorName(color);
+        lightUpButton(colorName, false); //Do not play button's sound, we'll play a winning sound (TODO)
+      }, turnOnIn);
+
+      //turn off
+      setTimeout(function(){
+        color.css('filter', 'brightness(100%)');
+      }, turnOffIn);
+
+      window.clearTimeout(playerTimer);
+    });
+  }
+ }
+
+ function lightUpButton(colorName, playSound){
+   color = colorObj[colorName];
+
+   color.element.css('filter', 'brightness(160%)');
+
+   if(playSound){
+     //Will do this in a bit
+     console.log(colorName + "'s Sound");
+    color.sound[0].play()
+   }
+ }
+
+ function getColorName(element){
+   return $(element).attr('id');
+ }
    //0 : turn on 0, turn off in 500
    //1 : turn on in 1000, turn off in 1500
    //2 : turn on in 2000, turn off in 2500

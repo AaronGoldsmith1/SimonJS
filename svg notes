@@ -1,0 +1,5 @@
+SVG file
+
+-copy html for font into seperate .svg file
+-reference it like an image inside my html
+-something like youwin.img
