@@ -12,7 +12,6 @@ $("#crazyMode").click(function(){
   $("#mainToy").toggleClass("rotate");
 })
 
-
 var colorObj = {};
 
 $colors.each(function(){
@@ -27,7 +26,7 @@ $colors.each(function(){
 function gameSequence(){
   console.log("hi");
   if (counter === 0){
-    simonMove();
+    setTimeout(simonMove, 300);
   }else{
     myMove();
   }
@@ -96,7 +95,8 @@ function myMove(){
         userWin();
       }else{
         console.log("Moving to Simons Turn");
-        simonMove();
+
+        setTimeout(simonMove, 500); //need to set timout?
       }
     } else {
       console.log('running game over')
@@ -196,7 +196,7 @@ $('#resetButton').click(function(){
       //turn on
       setTimeout(function(){
         var colorName = getColorName(color);
-        lightUpButton(colorName, false); //Do not play button's sound, play a winning sound (TODO)
+        lightUpButton(colorName, false); //Do not play button's sound
       }, turnOnIn);
 
       //turn off
@@ -224,3 +224,22 @@ $('#resetButton').click(function(){
  function getColorName(element){
    return $(element).attr('id');
  }
+
+
+ //keyboard controls
+ //keycodes;
+ //
+
+
+//global -> player click = 0 inside simonMove so always comparing first element
+// if mysequence[playerclick] === ss[pc]
+//lightUpButton
+//{else}gameover
+//playerclick++
+
+
+//todo
+//Display timer countdown inside main toy next to counter
+//Text display winner or looser
+//Set difficulty with move intervals, speeds up progressively in each sequence, change user timer
+//finish readme

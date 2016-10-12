@@ -102,6 +102,20 @@ body {
     color: #312F31;
 }
 
+#timeToMove {
+  height: 30px;
+  width: 40px;
+  background-color: black;
+  color: #F5D825;
+  font-size: 27px;
+  text-align: center;
+  font-weight: bold;
+  border: 4px solid #312F31;
+  border-radius: 4px;
+  position: absolute;
+  left: 75px;
+
+}
 #roundDisplay{
   height: 30px;
   width: 40px;
@@ -112,7 +126,9 @@ body {
   font-weight: bold;
   border: 4px solid #312F31;
   border-radius: 4px;
-  margin: 0 auto;
+  right: 70px;
+  top: 113px;
+  position: absolute;
 
 }
 #startButton {
@@ -121,7 +137,7 @@ body {
     border-radius: 50px;
     background-color: #ED424B;
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 60px;
     position: absolute;
     left: 65px;
     outline: none;
@@ -134,7 +150,7 @@ body {
   border-radius: 50px;
   background-color: #312F31;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 60px;
   position: absolute;
   right: 65px;
   outline: none;
@@ -142,7 +158,7 @@ body {
 }
 
 #reset {
-  margin-top: 73px;
+  margin-top: 113px;
   margin-left: 177px;
   font-weight: bold;
   font-family: 'Play', sans-serif;
@@ -152,7 +168,7 @@ body {
 }
 #start {
     position: absolute;
-    margin-top: 73px;
+    margin-top: 113px;
     margin-left: 55px;
     font-weight: bold;
     font-family: 'Play', sans-serif;
@@ -174,6 +190,7 @@ body {
   position: absolute;
   right: 130px;
   bottom: 85px;
+  border-color: black;
 
 
 }
