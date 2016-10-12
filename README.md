@@ -54,6 +54,11 @@
 ##Trello
 ####<https://trello.com/b/eFfWUqyA/simon-says-javascript>
 
+##Approach Taken
+* Identify each colored section 
+
+##Unresloved Issues
+
 ##Wireframe
 ![](assets/Simon.png)
 ![](assets/Simon2.png)

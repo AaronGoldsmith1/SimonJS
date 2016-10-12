@@ -15,6 +15,14 @@ body {
   line-height: 90px;
 
 }
+
+#playerAlert {
+  text-align: center;
+  margin-top: 15px;
+
+
+}
+
 #mainToy {
     height: 600px;
     width: 600px;
@@ -215,6 +223,8 @@ body {
   font-size: 14px;
 
 }
+
+
 
 .switch {
   position: relative;
