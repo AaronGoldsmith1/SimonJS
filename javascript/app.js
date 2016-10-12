@@ -29,8 +29,6 @@ function gameSequence(){
   }
 }
 
-
-
 function simonMove(){
 
   var newMove = $colors[(Math.floor(Math.random() * 4))];
@@ -42,7 +40,7 @@ function simonMove(){
 }
 
 function lightSimonsNextColor(index){
-  // var index = 0;
+
   var $currentColor = $(simonSequence[index]);
   var colorName = getColorName($currentColor);
   lightUpButton(colorName, true);
@@ -73,14 +71,14 @@ function beginPlayersTurn(){
 function startTimer(){
   playerTimer = setTimeout(function(){
     alert("out of time!")
-  },3000)
+  },5000)
 
 }
 
 
 function myMove(){
 	console.log("Checking Players Turn");
-  // console.log("player: ", mySequence)
+
 	if(playerTimer){
 		clearTimeout(playerTimer);
 	}
@@ -99,7 +97,7 @@ function myMove(){
     } else {
       console.log('running game over')
       gameOver();
-      // location.reload();
+
     }
   } else {
     startTimer();
@@ -107,10 +105,9 @@ function myMove(){
 
 }
 
-//only comparing first element
 function compareArrays(arr1, arr2) {
   for(var i = 0; i < arr1.length; i++){
-    if(arr1[i] !== arr2[i]){  //double for loop
+    if(arr1[i] !== arr2[i]){
       return false;
     }
   }
@@ -176,52 +173,10 @@ $('#resetButton').click(function(){
   });
  }
 
-
-
-
-//simon plays
-//create timeout(give player3sec to click)
-//player clicks
-//clear timeout
-//highlight what simon did
-//check move?
-//simon play OR create timeout
-
-
-//dont play moves too quickly
-
-//TO-DO;
-//RESET BUTTON - clearTimeout
-//WINNING or ROUND COUNTER WITH DISPLAY
-
-
-/*
-
- function userWin() {
-   winFlashes++;
-  $colors.each(function(){
-    var color = $(this)
-    color.css('filter', 'brightness(160%)');
-    setTimeout(function(){
-      color.css('filter', 'brightness(100%)');
-      debugger;
-      if(winFlashes < 4){
-        setTimeout(function(){
-          userWin();
-        }, 500)
-      }else{
-        winFlashes = 0;
-      }
-    },1400)
-
-    window.clearTimeout(playerTimer);
-  });
- }
-*/
  function userWin() {
    winFlashes++;
 
-  for(var i =0; i<4; i++){
+  for(var i = 0; i < 4; i++){
     $colors.each(function(){
       var color = $(this);
       var turnOnIn = 1000 * i;
@@ -235,7 +190,7 @@ $('#resetButton').click(function(){
       //turn on
       setTimeout(function(){
         var colorName = getColorName(color);
-        lightUpButton(colorName, false); //Do not play button's sound, we'll play a winning sound (TODO)
+        lightUpButton(colorName, false); //Do not play button's sound, play a winning sound (TODO)
       }, turnOnIn);
 
       //turn off
@@ -254,7 +209,7 @@ $('#resetButton').click(function(){
    color.element.css('filter', 'brightness(160%)');
 
    if(playSound){
-     //Will do this in a bit
+  
      console.log(colorName + "'s Sound");
     color.sound[0].play()
    }
@@ -263,64 +218,3 @@ $('#resetButton').click(function(){
  function getColorName(element){
    return $(element).attr('id');
  }
-   //0 : turn on 0, turn off in 500
-   //1 : turn on in 1000, turn off in 1500
-   //2 : turn on in 2000, turn off in 2500
-   //3: turn on in 3000, turn off in 3500
-
-
-//simon plays
-//create timeout(give player3sec to click)
-//player clicks
-//clear timeout
-//highlight what simon did
-//check move?
-//simon play OR create timeout
-
-
-//dont play moves too quickly
-
-//TO-DO;
-//RESET BUTTON - clearTimeout
-//WINNING or ROUND COUNTER WITH DISPLAY
-
-
-
-
-
-
-
-
-
-//simon plays
-//create timeout(give player3sec to click)
-//player clicks
-//clear timeout
-//highlight what simon did
-//check move?
-//simon play OR create timeout
-
-
-//dont play moves too quickly
-
-//TO-DO;
-//RESET BUTTON - clearTimeout
-//WINNING or ROUND COUNTER WITH DISPLAY
-
-
-
- /*
-
-for (var i = 0; i < 4; i++){}
-  $colors.each(function(){
-    $(this).css('filter', 'brightness(160%)');
-    setTimeout(function(){
-      $(this).css('filter', 'brightness(100%)');
-
-    },1400)
-
-    window.clearTimeout(playerTimer);
-  })
-  if (roundCounter == 3){
-    alert("you win!")
-*/
