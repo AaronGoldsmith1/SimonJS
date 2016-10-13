@@ -8,10 +8,23 @@ var winFlashes = 0;
 $colors = $('.section');
 //$sounds = $('.sound');
 
+var difficulty = "hard"; // or "hard"
+
+
+
+var difficultyUnits = {
+  easy: {
+    simonsSpeed: 1000
+  },
+  hard: {
+    simonsSpeed: 500
+  }
+}
+
+
 $("#crazyMode").click(function(){
   $("#mainToy").toggleClass("rotate");
 })
-
 
 var colorObj = {};
 
@@ -57,13 +70,13 @@ function lightSimonsNextColor(index){
     if(nextIndex < simonSequence.length){
       setTimeout(function () {
         lightSimonsNextColor(nextIndex);
-      }, 500);
+      }, difficultyUnits[difficulty].simonsSpeed / 2);
     }else{
       beginPlayersTurn();
       startTimer();
     }
 
-  }, 1000);
+  }, difficultyUnits[difficulty].simonsSpeed);
 
 }
 
@@ -73,9 +86,14 @@ function beginPlayersTurn(){
 }
 
 function startTimer(){
-  playerTimer = setTimeout(function(){
-    alert("out of time!")
-  },5000)
+  var countDown = 6;
+  playerTimer = setInterval(function(){
+    countDown = countDown - 1;
+    $("#timeToMove").text(countDown);
+    if (countDown == 0) {
+        gameOver();
+    }
+  },1000)
 
 }
 
@@ -84,8 +102,14 @@ function myMove(){
 	console.log("Checking Players Turn");
 
 	if(playerTimer){
-		clearTimeout(playerTimer);
+		clearInterval(playerTimer);
 	}
+
+	if(!compareLastButtonPress()){
+	  gameOver();
+	  return;
+	}
+
   // Determine if the turn was completed or not
   if(mySequence.length == simonSequence.length){
     var equality = compareArrays(mySequence, simonSequence)
@@ -97,7 +121,7 @@ function myMove(){
       }else{
         console.log("Moving to Simons Turn");
 
-        setTimeout(simonMove, 500); 
+        setTimeout(simonMove, 500); //need to set timout?
       }
     } else {
       console.log('running game over')
@@ -110,6 +134,14 @@ function myMove(){
 
 }
 
+function compareLastButtonPress(){
+  var index = mySequence.length - 1;
+  var lastButton = getColorName(mySequence[index]);
+  var simonsMoveAtIndex = getColorName(simonSequence[index]);
+
+  return lastButton == simonsMoveAtIndex;
+}
+
 function compareArrays(arr1, arr2) {
   for(var i = 0; i < arr1.length; i++){
     if(arr1[i] !== arr2[i]){
@@ -120,16 +152,17 @@ function compareArrays(arr1, arr2) {
 }
 
 function gameOver() {
-  lightUpButton("yellow", true);
+  lightUpButton("yellow", false);
   $('#razz')[0].play();
   setTimeout(function(){
     $('#yellow').css('filter', 'brightness(100%)');
 
-  },1400)
+  },1400);
 
   simonSequence.length = 0;
   mySequence.length = 0;
-  window.clearTimeout(playerTimer);
+  window.clearInterval(playerTimer);
+  $("#playerAlertLose").show();
 }
 
 function playerColorMousedown(){
@@ -155,30 +188,19 @@ $('#resetButton').click(function(){
   roundCounter = 0;
   $('#roundDisplay').text(0);
   $('#mainToy').removeClass("rotate");
-  window.clearTimeout(playerTimer);
-
+  $(".winLoseMessage").hide();
+  window.clearInterval(playerTimer);
 })
 
- function userWin() {
-   winFlashes++;
-  $colors.each(function(){
-    var colorName = getColorName(this);
-    lightUpButton(colorName, true);
-    setTimeout(function(){
-      $(this).css('filter', 'brightness(100%)');
+$("#difficultyToggle").change(function() {
+  if ($(this).is(":checked")){   //jQuery filter
+    difficulty = "hard";
+  } else {
+    difficulty = "easy";
+  }
+})
 
-      if(winFlashes < 4){
-        setTimeout(function(){
-          userWin();
-        }, 500)
-      }else{
-        winFlashes = 0;
-      }
-    },1400)
 
-    window.clearTimeout(playerTimer);
-  });
- }
 
  function userWin() {
    winFlashes++;
@@ -205,9 +227,10 @@ $('#resetButton').click(function(){
         color.css('filter', 'brightness(100%)');
       }, turnOffIn);
 
-      window.clearTimeout(playerTimer);
+      window.clearInterval(playerTimer);
     });
   }
+  $("#playerAlert").show();
  }
 
  function lightUpButton(colorName, playSound){
@@ -233,39 +256,18 @@ $('#resetButton').click(function(){
 
  //keyboard controls
  //keycodes;
- //w = 87
- //q = 81
- //a = 65
- //s = 83
+ //
 
- /*
- function startTimer(){
 
-   playerTimer = setTimeout(function(){
-     alert("out of time!")
-     var timerNumber = 5
-     setTimeout(function countDown(){
-           for (var i = 5; i <= 0; i--){
-           timerNumber--;
-       $('#timeToMove').text(timerNumber)
-     }, 1000)
-     }
-   },5000)
+//global -> player click = 0 inside simonMove so always comparing first element
+// if mysequence[playerclick] === ss[pc]
+//lightUpButton
+//{else}gameover
+//playerclick++
 
- }
-
- var timerNumber = 5
- for (i = 5; i > 0; i--){
-   setTimeout(function() {
-     timerNumber--;
-     $("#timeToMove").text(timerNumber)
-   })
- }
- */
 
 //todo
 //Display timer countdown inside main toy next to counter
 //Text display winner or looser
 //Set difficulty with move intervals, speeds up progressively in each sequence, change user timer
-// -- declare variables for each timeout numerical values for simonMove and user, adjust accordingly
 //finish readme

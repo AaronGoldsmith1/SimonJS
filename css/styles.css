@@ -15,14 +15,6 @@ body {
   line-height: 90px;
 
 }
-
-#playerAlert {
-  text-align: center;
-  margin-top: 15px;
-
-
-}
-
 #mainToy {
     height: 600px;
     width: 600px;
@@ -222,6 +214,13 @@ body {
   bottom: 1px;
   font-size: 14px;
 
+}
+
+.winLoseMessage  {
+	margin: 0 auto;
+  width: 600px;
+  padding-left: 120px;
+  display: none;
 }
 
 

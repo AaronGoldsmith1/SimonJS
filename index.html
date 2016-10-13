@@ -25,7 +25,7 @@
         <div id="horizontal"></div>
         <div id="vertical"></div>
       <div id="innerConsole">
-      
+
         <div id="gameTitle">simon</div>
         <div id="roundDisplay">0</div>
         <div id="timeToMove">5</div>
@@ -43,7 +43,7 @@
 
             <div id="difficultySwitch">
             <label class="switch">
-          <input type="checkbox">
+          <input id="difficultyToggle" type="checkbox">
           <div class="slider"></div>
           <div id="difficultyEasy">Easy</div>
           <div id="difficultyHard">Hard</div>
@@ -53,7 +53,8 @@
 </div>
     </div>
 
-    <div id="playerAlert">YOU WIN!</div>
+    <div id="playerAlert" class="winLoseMessage"><img src="assets/win.svg"/></div>
+    <div id="playerAlertLose" class="winLoseMessage"><img src="assets/lose.svg"/></div>
     <audio src="assets/razz.m4a" id="razz">
     <audio src="assets/green.m4a" id="greenSound" class="sound">
     <audio src="assets/red.m4a" id="redSound" class="sound">
