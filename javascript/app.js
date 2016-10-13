@@ -164,7 +164,7 @@ function gameOver() {
 
 function playerColorMousedown(){
   var colorName = getColorName(this);
-  lightUpButton(colorName, true);
+  lightUpButton(colorName, true); //move to mouseUp? Add js .loop()?
   //$(this).css('filter', 'brightness(160%)');
   mySequence.push(this);
 }
