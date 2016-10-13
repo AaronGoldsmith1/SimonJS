@@ -66,9 +66,8 @@
 ##Unresloved Issues
 * Colored sections are not accurately responsive with corresponding sounds for the length of time they are pressed.
 * Sound of Simon's first move is sometimes imperceptible.
-* Difficulty does not continuously increase after a set number of moves in a given sequence.
 * SVG win/lose messages are not precisely centered.
-* Timer will sometimes countdown from 0.
+* Timer will occasionally countdown starting from 0.
 
 ##Wireframe
 ![](assets/Simon.png)
