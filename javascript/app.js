@@ -8,8 +8,6 @@ var winFlashes = 0;    // display winning signal
 $colors = $('.section');    // each of the clored sections stored in an array
 var difficulty = "easy";    // default difficulty setting
 
-
-
 //setting length of Simon's moves for varying difficulty
 var difficultyUnits = {
   easy: {
@@ -19,7 +17,6 @@ var difficultyUnits = {
     simonsSpeed: 500
   }
 }
-
 
 //assigning distinct sounds to each colored section and storing as objects in colorObj
 var colorObj = {};
@@ -32,7 +29,8 @@ $colors.each(function(){
 
 });
 
-//alternates moves between player and Simon, delays Simon's move to it can be seen
+//initiate game with Simon's move
+//necessary?
 function gameSequence(){
   console.log("hi");
   if (counter === 0){
@@ -83,7 +81,7 @@ function beginPlayersTurn(){
 
 //player has 5 seconds to complete move
 function startTimer(){
-  var countDown = 5;
+  var countDown = 6;
   playerTimer = setInterval(function(){
     countDown = countDown - 1;
     $("#timeToMove").text(countDown);
@@ -103,7 +101,7 @@ function myMove(){
 		clearInterval(playerTimer);
 	}
 
-	if(!compareLastButtonPress()){ //if player makes wrong move, end game
+	if(!compareLastButtonPress()){ //if player makes wrong move in sequence, end game
 	  gameOver();
 	  return;
 	}
