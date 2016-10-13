@@ -22,8 +22,10 @@
 ##Technology Used
 * **HTML5**
 * **CSS**
+* **SVG**
 * **Javascript**
 * **Jquery**
+
 
 
 
@@ -55,7 +57,8 @@
 ####<https://trello.com/b/eFfWUqyA/simon-says-javascript>
 
 ##Approach Taken
-* Identify each colored section 
+* Identify each colored section with sound in a jQuery object
+* Time the 'turning off' and 'turning on' of the sections with th
 
 ##Unresloved Issues
 

@@ -8,9 +8,7 @@ var winFlashes = 0;
 $colors = $('.section');
 //$sounds = $('.sound');
 
-var difficulty = "hard"; // or "hard"
-
-
+var difficulty = "easy";
 
 var difficultyUnits = {
   easy: {
@@ -20,7 +18,6 @@ var difficultyUnits = {
     simonsSpeed: 500
   }
 }
-
 
 $("#crazyMode").click(function(){
   $("#mainToy").toggleClass("rotate");
@@ -187,6 +184,7 @@ $('#resetButton').click(function(){
   mySequence.length = 0;
   roundCounter = 0;
   $('#roundDisplay').text(0);
+  $("#timeToMove").text("5");
   $('#mainToy').removeClass("rotate");
   $(".winLoseMessage").hide();
   window.clearInterval(playerTimer);
