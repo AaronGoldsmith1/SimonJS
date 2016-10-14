@@ -66,7 +66,6 @@
 ##Unresloved Issues
 * Colored sections are not accurately responsive with corresponding sounds for the length of time they are pressed.
 * SVG win/lose messages are not precisely centered.
-* Timer will occasionally countdown starting from 0.
 
 ##Wireframe
 ![](assets/Simon.png)
