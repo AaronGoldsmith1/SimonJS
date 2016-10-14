@@ -76,7 +76,7 @@ function lightSimonsNextColor(index){
 
 function beginPlayersTurn(){
 	console.log("Begin Players Turn");
-	mySequence = []; // redundant with reset?
+	mySequence = [];
 }
 
 //player has 5 seconds to complete move
@@ -112,7 +112,7 @@ $("#timeToMove").text("5");
     var equality = compareArrays(mySequence, simonSequence)
     console.log(equality)
     if (equality){
-      if (roundCounter == 3){  //number of rounds needed to win the game
+      if (roundCounter == 6){  //number of rounds needed to win the game
 
         userWin();
       }else{
