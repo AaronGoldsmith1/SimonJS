@@ -60,12 +60,11 @@
 * Identify each colored section with sound in a jQuery object
 * Store and compare user's sequence and Simon's sequence of moves in arrays
 * Time the 'turning on' and 'turning off' of the sections with .setTimeout() method and jQuery mouse listeners.
-* Utilize the CSS attribute 'filter' to adjust the brightness of the colored sections at different time intervals to simulate lighting up and turning off.
+* Utilize the CSS property 'filter' to adjust the brightness of the colored sections at different time intervals to simulate lighting up and turning off.
 * Adjust the timing of the color flashing for 'easy' and 'hard' difficulty
 
 ##Unresloved Issues
 * Colored sections are not accurately responsive with corresponding sounds for the length of time they are pressed.
-* Sound of Simon's first move is sometimes imperceptible.
 * SVG win/lose messages are not precisely centered.
 * Timer will occasionally countdown starting from 0.
 

@@ -3,7 +3,7 @@ var mySequence = [];    //array to store the player sequence
 var counter = 0;    // determines if it's Simon's or player's move
 var roundCounter = 0;    // currnet game round
 var isDown = false;    // to determine when the mouse is pressed down
-var playerTimer = false; //?
+var playerTimer = false; //determines when timed period begins for a move
 var winFlashes = 0;    // display winning signal
 $colors = $('.section');    // each of the clored sections stored in an array
 var difficulty = "easy";    // default difficulty setting
@@ -64,13 +64,13 @@ function lightSimonsNextColor(index){
     if(nextIndex < simonSequence.length){   //checking if all of Simon's sequence has been played back
       setTimeout(function () {
         lightSimonsNextColor(nextIndex);
-      }, difficultyUnits[difficulty].simonsSpeed / 2); //
+      }, difficultyUnits[difficulty].simonsSpeed / 2); //time in between each button press
     }else{
       beginPlayersTurn();
       startTimer();
     }
 
-  }, difficultyUnits[difficulty].simonsSpeed);
+  }, difficultyUnits[difficulty].simonsSpeed); //turning off button based on difficutly
 
 }
 
@@ -81,11 +81,12 @@ function beginPlayersTurn(){
 
 //player has 5 seconds to complete move
 function startTimer(){
+  clearInterval(playerTimer);
   var countDown = 6;
   playerTimer = setInterval(function(){
     countDown = countDown - 1;
     $("#timeToMove").text(countDown);
-    if (countDown == 0) {  // end the game when time runs out
+    if (countDown < 1) {  // end the game when time runs out
         gameOver();
     }
   },1000)
@@ -95,15 +96,15 @@ function startTimer(){
 
 function myMove(){
 	console.log("Checking Players Turn");
-
-// ??
+$("#timeToMove").text("5");
+//countdown between moves, resets after move
 	if(playerTimer){
 		clearInterval(playerTimer);
 	}
 
 	if(!compareLastButtonPress()){ //if player makes wrong move in sequence, end game
 	  gameOver();
-	  return; //? stop comparing sequences?
+	  return; //stops comparing sequences
 	}
 
 
@@ -125,7 +126,7 @@ function myMove(){
 
     }
   } else {
-    startTimer();
+    startTimer(); //restart the timer for each move
   }
 
 }
@@ -216,7 +217,7 @@ function lightUpButton(colorName, playSound){
    color.element.css('filter', 'brightness(160%)');
 
    if(playSound){   // play color sound if true
-
+      stopAllSounds();
      console.log(colorName + "'s Sound");
     color.sound[0].play()    //play() method starts playing the current audio
    }
@@ -238,7 +239,7 @@ $('#resetButton').click(function(){
   mySequence.length = 0;
   roundCounter = 0;
   $('#roundDisplay').text(0);
-  $("#timeToMove").text("5"); //problematic?
+  $("#timeToMove").text("5");
   $('#mainToy').removeClass("rotate");
   $(".winLoseMessage").hide();
   window.clearInterval(playerTimer);
@@ -257,6 +258,12 @@ $("#crazyMode").click(function(){
   $("#mainToy").toggleClass("rotate");
 })
 
-//timer goes to negative numbers, won't reset
-//player timer has delay
-//set delay before simon moves so you can hear his section light up
+function stopAllSounds() {
+
+  $(".sound").each(function(){
+    this.pause();
+    this.currenTime = 0;
+  });
+}
+
+//if button is clicked when no game is running, it displays 'you lose'
