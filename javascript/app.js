@@ -3,7 +3,7 @@ var mySequence = [];    //array to store the player sequence
 var counter = 0;    // determines if it's Simon's or player's move
 var roundCounter = 0;    // currnet game round
 var isDown = false;    // to determine when the mouse is pressed down
-var playerTimer = false; //
+var playerTimer = false; //?
 var winFlashes = 0;    // display winning signal
 $colors = $('.section');    // each of the clored sections stored in an array
 var difficulty = "easy";    // default difficulty setting
@@ -103,7 +103,7 @@ function myMove(){
 
 	if(!compareLastButtonPress()){ //if player makes wrong move in sequence, end game
 	  gameOver();
-	  return;
+	  return; //? stop comparing sequences?
 	}
 
 
@@ -117,7 +117,7 @@ function myMove(){
       }else{
         console.log("Moving to Simons Turn");
 
-        setTimeout(simonMove, 500);
+        setTimeout(simonMove, 1500);
       }
     } else {
       console.log('running game over')
@@ -149,6 +149,7 @@ function compareArrays(arr1, arr2) { //checking if each of the moves are the sam
   return true;
 }
 
+//light up yellow section with unique sound to signify player loss
 function gameOver() {
   lightUpButton("yellow", false);
   $('#razz')[0].play();
@@ -160,54 +161,24 @@ function gameOver() {
   simonSequence.length = 0;
   mySequence.length = 0;
   window.clearInterval(playerTimer);
-  $("#playerAlertLose").show();
+  $("#playerAlertLose").show(); //display losing text alert
 }
 
 //when player clicks section, light up with sound, add to sequence
 function playerColorMousedown(){
   var colorName = getColorName(this);
   lightUpButton(colorName, true); //move to mouseUp? Add js .loop()?
-  //$(this).css('filter', 'brightness(160%)');
   mySequence.push(this);
 }
 
-//turn of colored section
+//turn off colored section
 function playerColorMouseup(){
    $(this).css('filter', 'brightness(100%)');
    myMove(); // determine when it's simons move
 }
 
-$('#startButton').click(gameSequence); // Start game
-
-//controls when colored section turns on and off with mouse
- $colors.on("mousedown", playerColorMousedown);
- $colors.on("mouseup", playerColorMouseup);
-
-$('#resetButton').click(function(){
-  simonSequence.length = 0;
-  mySequence.length = 0;
-  roundCounter = 0;
-  $('#roundDisplay').text(0);
-  $("#timeToMove").text("5"); //problematic?
-  $('#mainToy').removeClass("rotate");
-  $(".winLoseMessage").hide();
-  window.clearInterval(playerTimer);
-})
-
-$("#difficultyToggle").change(function() {
-  if ($(this).is(":checked")){   //jQuery filter listens to toggle switch for difficulty setting
-    difficulty = "hard";
-  } else {
-    difficulty = "easy";
-  }
-})
-
-//rotate toy when clicking crazy mode button with question mark
-$("#crazyMode").click(function(){
-  $("#mainToy").toggleClass("rotate");
-})
-
- function userWin() {
+//all colored section flash 4 times in a row to signify the user has won
+function userWin() {
    winFlashes++;
 
   for(var i = 0; i < 4; i++){
@@ -244,7 +215,7 @@ function lightUpButton(colorName, playSound){
 
    color.element.css('filter', 'brightness(160%)');
 
-   if(playSound){   // play sound if true
+   if(playSound){   // play color sound if true
 
      console.log(colorName + "'s Sound");
     color.sound[0].play()    //play() method starts playing the current audio
@@ -252,10 +223,40 @@ function lightUpButton(colorName, playSound){
  }
 
 //get the name of individual colored section
- function getColorName(element){
+function getColorName(element){
    return $(element).attr('id');
  }
 
+$('#startButton').click(gameSequence); // Start game
 
- //timer goes to negative numbers, won't reset
- //player timer has delay
+//controls when colored section turns on and off with mouse
+ $colors.on("mousedown", playerColorMousedown);
+ $colors.on("mouseup", playerColorMouseup);
+
+$('#resetButton').click(function(){
+  simonSequence.length = 0;
+  mySequence.length = 0;
+  roundCounter = 0;
+  $('#roundDisplay').text(0);
+  $("#timeToMove").text("5"); //problematic?
+  $('#mainToy').removeClass("rotate");
+  $(".winLoseMessage").hide();
+  window.clearInterval(playerTimer);
+})
+
+$("#difficultyToggle").change(function() {
+  if ($(this).is(":checked")){   //jQuery filter listens to toggle switch for difficulty setting
+    difficulty = "hard";
+  } else {
+    difficulty = "easy";
+  }
+})
+
+//rotate toy when clicking crazy mode button with question mark
+$("#crazyMode").click(function(){
+  $("#mainToy").toggleClass("rotate");
+})
+
+//timer goes to negative numbers, won't reset
+//player timer has delay
+//set delay before simon moves so you can hear his section light up
