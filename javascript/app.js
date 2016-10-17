@@ -217,7 +217,7 @@ function lightUpButton(colorName, playSound){
    color.element.css('filter', 'brightness(160%)');
 
    if(playSound){   // play color sound if true
-      stopAllSounds();
+      stopAllSounds(); //stops sound of previously played button before current sound
      console.log(colorName + "'s Sound");
     color.sound[0].play()    //play() method starts playing the current audio
    }
@@ -258,12 +258,14 @@ $("#crazyMode").click(function(){
   $("#mainToy").toggleClass("rotate");
 })
 
-function stopAllSounds() {
+function stopAllSounds() { //make all sounds distinct
 
   $(".sound").each(function(){
     this.pause();
-    this.currenTime = 0;
+    this.currentTime = 0;
   });
 }
 
 //if button is clicked when no game is running, it displays 'you lose'
+//make buttons truly responsive with sound
+//strict mode?
