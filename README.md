@@ -29,9 +29,9 @@
 
 
 
-##Installation Instructions
+## Installation Instructions
 
-####Play on your computer:
+#### Play on your computer:
 1. [**Download the .zip file**](https://github.com/AaronJGoldsmith/SimonJS/archive/master.zip)
 2. Double-click "SimonJS-master.zip" to extract files 
 3. Open index.html
@@ -63,7 +63,7 @@
 * Utilize the CSS property 'filter' to adjust the brightness of the colored sections at different time intervals to simulate lighting up and turning off.
 * Adjust the timing of the color flashing for 'easy' and 'hard' difficulty
 
-##Unresloved Issues
+## Unresloved Issues
 * Colored sections are not accurately responsive with corresponding sounds for the length of time they are pressed.
 * SVG win/lose messages are not precisely centered.
 
