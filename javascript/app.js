@@ -5,7 +5,7 @@ var roundCounter = 0;    // currnet game round
 var isDown = false;    // to determine when the mouse is pressed down
 var playerTimer = false; //determines when timed period begins for a move
 var winFlashes = 0;    // display winning signal
-$colors = $('.section');    // each of the clored sections stored in an array
+$colors = $('.section');    // each of the clored sections stored in an array (need var?)
 var difficulty = "easy";    // default difficulty setting
 
 //setting length of Simon's moves for varying difficulty
@@ -184,7 +184,7 @@ function userWin() {
 
   for(var i = 0; i < 4; i++){
     $colors.each(function(){
-      var color = $(this);  //referencing all colored sections
+      var color = $(this);  //referencing all colored sections (only $color = $(this)) ($colors.each(color.each())
       var turnOnIn = 1000 * i;
       var turnOffIn = turnOnIn + 500;
 
@@ -231,8 +231,8 @@ function getColorName(element){
 $('#startButton').click(gameSequence); // Start game
 
 //controls when colored section turns on and off with mouse
- $colors.on("mousedown", playerColorMousedown);
- $colors.on("mouseup", playerColorMouseup);
+  $colors.on("mousedown", playerColorMousedown);
+  $colors.on("mouseup", playerColorMouseup);
 
 $('#resetButton').click(function(){
   simonSequence.length = 0;
@@ -260,7 +260,7 @@ $("#crazyMode").click(function(){
 
 function stopAllSounds() { //make all sounds distinct
 
-  $(".sound").each(function(){
+  $(".sound").each(function(){ //
     this.pause();
     this.currentTime = 0;
   });
